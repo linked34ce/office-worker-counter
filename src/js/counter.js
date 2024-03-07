@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return counter;
     };
     const setCounter = (counter) => {
-        document.getElementById("day").innerText = counter.day.toString();
-        document.getElementById("hour").innerText = counter.hour.toString();
-        document.getElementById("minute").innerText =
-            counter.minute.toString();
-        document.getElementById("second").innerText =
-            counter.second.toString();
+        // document.getElementById("day").innerText = counter.day.toString();
+        // document.getElementById("hour").innerText = counter.hour.toString();
+        // document.getElementById("minute").innerText =
+        //     counter.minute.toString();
+        // document.getElementById("second").innerText =
+        //     counter.second.toString();
     };
     const firstCommuteDate = getFirstCommuteDate();
     let delta;
