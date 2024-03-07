@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const now = new Date();
         const year = now.getFullYear();
 
-        const aprilFirst = new Date(`${year}-04-01 00:00:00 GMT+09:00`);
+        const aprilFirst = new Date(`${year}/04/01 00:00:00 GMT+09:00`);
         const dayOfWeek = aprilFirst.getDay();
 
         let date: string;
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
         }
 
-        return new Date(`${year}-04-${date} 00:00:00 GMT+09:00`);
+        return new Date(`${year}/04/${date} 00:00:00 GMT+09:00`);
     };
 
     const getCounter = (delta: number): Counter => {
