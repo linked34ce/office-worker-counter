@@ -1,0 +1,61 @@
+body {
+    background-color: #212529;
+    color: #f8f9fa;
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    font-style: italic;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.text {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.office-worker {
+    color: goldenrod;
+    font-size: 4.5rem;
+    margin-left: 5px;
+}
+
+.sparkle {
+    font-size: 2rem;
+}
+
+.sparkle-top {
+    vertical-align: top;
+}
+
+.sparkle-bottom {
+    vertical-align: bottom;
+    margin-left: 10px;
+}
+
+.to-go {
+    font-size: 2rem;
+    text-align: right;
+    margin: 10px 10px 0 0;
+}
+
+.counter {
+    margin-left: calc((100% - 260px) / 2);
+}
+
+.time {
+    margin-top: 15px;
+}
+
+.number {
+    display: inline-block;
+    color: palevioletred;
+    font-size: 4rem;
+    text-align: right;
+    width: 140px;
+}
+
+.unit {
+    font-size: 2rem;
+    margin-left: 20px;
+}
