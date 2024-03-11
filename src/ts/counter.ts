@@ -1,11 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
-    type Counter = {
-        day: number;
-        hour: number;
-        minute: number;
-        second: number;
-    };
+type Counter = {
+    day: number;
+    hour: number;
+    minute: number;
+    second: number;
+};
 
+const TIME = {
+    HOURS_PER_DAY: 24,
+    MINUTES_PER_HOUR: 60,
+    SECONDS_PER_MINUTE: 60,
+    MILLISECONDS_PER_MINUTE: 1000,
+};
+
+document.addEventListener("DOMContentLoaded", () => {
     const getFirstCommuteDate = (): Date => {
         const now = new Date();
         const thisYear = now.getFullYear();
@@ -32,14 +39,30 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const getCounter = (delta: number): Counter => {
-        const date = new Date(delta);
-        date.setHours(date.getHours() - 9);
-
         const counter: Counter = {
-            day: Math.floor(delta / (1000 * 60 * 60 * 24)),
-            hour: date.getHours(),
-            minute: date.getMinutes(),
-            second: date.getSeconds(),
+            day: Math.floor(
+                delta /
+                    (TIME.MILLISECONDS_PER_MINUTE *
+                        TIME.SECONDS_PER_MINUTE *
+                        TIME.MINUTES_PER_HOUR *
+                        TIME.HOURS_PER_DAY),
+            ),
+            hour:
+                Math.floor(
+                    delta /
+                        (TIME.MILLISECONDS_PER_MINUTE *
+                            TIME.SECONDS_PER_MINUTE *
+                            TIME.MINUTES_PER_HOUR),
+                ) % TIME.HOURS_PER_DAY,
+            minute:
+                Math.floor(
+                    delta /
+                        (TIME.MILLISECONDS_PER_MINUTE *
+                            TIME.SECONDS_PER_MINUTE),
+                ) % TIME.MINUTES_PER_HOUR,
+            second:
+                Math.floor(delta / TIME.MILLISECONDS_PER_MINUTE) %
+                TIME.SECONDS_PER_MINUTE,
         };
 
         return counter;

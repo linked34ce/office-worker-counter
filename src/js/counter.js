@@ -1,4 +1,10 @@
 "use strict";
+const TIME = {
+    HOURS_PER_DAY: 24,
+    MINUTES_PER_HOUR: 60,
+    SECONDS_PER_MINUTE: 60,
+    MILLISECONDS_PER_MINUTE: 1000,
+};
 document.addEventListener("DOMContentLoaded", () => {
     const getFirstCommuteDate = () => {
         const now = new Date();
@@ -21,13 +27,21 @@ document.addEventListener("DOMContentLoaded", () => {
         return new Date(`${year}/04/${date} 00:00:00 GMT+09:00`);
     };
     const getCounter = (delta) => {
-        const date = new Date(delta);
-        date.setHours(date.getHours() - 9);
         const counter = {
-            day: Math.floor(delta / (1000 * 60 * 60 * 24)),
-            hour: date.getHours(),
-            minute: date.getMinutes(),
-            second: date.getSeconds(),
+            day: Math.floor(delta /
+                (TIME.MILLISECONDS_PER_MINUTE *
+                    TIME.SECONDS_PER_MINUTE *
+                    TIME.MINUTES_PER_HOUR *
+                    TIME.HOURS_PER_DAY)),
+            hour: Math.floor(delta /
+                (TIME.MILLISECONDS_PER_MINUTE *
+                    TIME.SECONDS_PER_MINUTE *
+                    TIME.MINUTES_PER_HOUR)) % TIME.HOURS_PER_DAY,
+            minute: Math.floor(delta /
+                (TIME.MILLISECONDS_PER_MINUTE *
+                    TIME.SECONDS_PER_MINUTE)) % TIME.MINUTES_PER_HOUR,
+            second: Math.floor(delta / TIME.MILLISECONDS_PER_MINUTE) %
+                TIME.SECONDS_PER_MINUTE,
         };
         return counter;
     };
