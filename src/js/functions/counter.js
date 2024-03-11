@@ -1,4 +1,4 @@
-import { TIME } from "./constants.js";
+import { TIME } from "./const/index.js";
 export const getCounter = (delta) => {
     const counter = {
         day: Math.floor(delta /
